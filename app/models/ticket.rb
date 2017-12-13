@@ -1,7 +1,8 @@
 class Ticket < ApplicationRecord
-  validates :number, presence: true
+  belongs_to :user
   belongs_to :train
-  belongs_to :from_station, class_name: 'RailwayStation'
-  belongs_to :to_station, class_name: 'RailwayStation'
-  belongs_to :user, optional: true
-  end
+  belongs_to :start_station, class_name: 'RailwayStation'
+  belongs_to :end_station, class_name: 'RailwayStation'
+
+  validates :number, presence: true
+end
