@@ -8,18 +8,14 @@
 <p>
   <strong>На станции:</strong>
   <% if @train.current_station.present? %>
-    <%= @train.current_station.title %>
-  <% else %>
-    Нет Станции
+    <%= @train.current_station&.title || 'Нет Станции' %>
   <% end %>
 </p>
 
 <p>
   <strong>Маршрут:</strong>
   <% if @train.route.present? %>
-    <%= @train.route.name %>
-  <% else %>
-    Нет Маршрута
+    <%= @train.route.name || 'Нет Маршрута' %>
   <% end %>
 </p>
 
