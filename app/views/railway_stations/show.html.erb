@@ -7,16 +7,16 @@
 
 <p>
   <% if @railway_station.routes.any? %>
-    Станция входит в следующие маршруты:
+   Станция входит в следующие маршруты:
     <ul>
       <%@railway_station.routes.each do |route| %>
         <li><%=route.name %></li>
-      <% end %>
+       <% end %>
     </ul>
   <% else %>
     Станция не входит не в один маршрут
   <% end %>
 </p>
 
-<%= link_to 'Edit', edit_railway_station_path(@railway_station) %> |
-<%= link_to 'Back', railway_stations_path %>
+<%= link_to 'Изменить', edit_railway_station_path(@railway_station) %> |
+<%= link_to 'Назад', railway_stations_path %>

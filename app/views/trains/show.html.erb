@@ -8,16 +8,44 @@
 <p>
   <strong>На станции:</strong>
   <% if @train.current_station.present? %>
-    <%= @train.current_station&.title || 'Нет Станции' %>
+  <%= @train.current_station&.title || 'Нет Станции' %>
   <% end %>
 </p>
 
 <p>
   <strong>Маршрут:</strong>
   <% if @train.route.present? %>
-    <%= @train.route.name || 'Нет Маршрута' %>
+  <%= @train.route.name || 'Нет Маршрута' %>
   <% end %>
 </p>
+
+<p>
+  <strong>Вагоны:</strong>
+  <% if @train.cars.present? %>
+    Плацкартных: <%=  @train.cars.regular.count %>
+    Купейных: <%= @train.cars.coupe.count %>
+  <% else %>
+    Нет вагонов
+  <% end %>
+</p>
+
+<p>
+  <strong>Места:</strong>
+  <% if @train.cars.present? %>
+    <strong>Плацкартных:</strong>
+    Верхних: <%= @train.regular_up_places %>
+    Нижних:  <%= @train.regular_down_places %>
+</p>
+
+<p>
+  <strong>Купейных:</strong>
+   Верхних: <%= @train.coupe_up_places %>
+   Нижних:  <%= @train.coupe_down_places %>
+ <% else %>
+   Нет вагонов
+ <% end %>
+</p>
+
 
 <%= link_to 'Изменить', edit_train_path(@train) %> |
 <%= link_to 'Назад', trains_path %>
