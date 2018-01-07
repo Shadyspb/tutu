@@ -4,4 +4,5 @@ class Route < ApplicationRecord
   has_many :trains
 
   validates :name, presence: true
+
 end
