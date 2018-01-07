@@ -16,6 +16,11 @@
     <%= form.collection_select :current_station_id, RailwayStation.all, :id, :title  %>
   </div>
 
+  <div class="field">
+    <%= form.label 'Сортировка вагонов от головы к хвосту' %>
+    <%= form.check_box :sort_from_head %>
+  </div>
+
   <div class="actions">
     <%= form.submit "#{ @train.new_record? ? 'Создать' : 'Изменить' }" %>
   </div>

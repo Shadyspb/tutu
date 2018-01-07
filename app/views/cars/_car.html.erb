@@ -1,10 +1,9 @@
 <tr>
-  <td><%= car.id %></td>
-  <td><%= car.kind %></td>
-  <td><%= car.train_id %></td>
-  <td><%= car.up_places %></td>
-  <td><%= car.down_places %></td>
-  <td><%= link_to 'Показать', car %></td>
+  <td><%= car.counter %></td>
+  <td><%= car.type %></td>
+  <td><%= car.train.number %></td>
+
+  <td><%= link_to 'Показать', car_path(car) %></td>
   <td><%= link_to 'Редактировать', edit_car_path(car) %></td>
-  <td><%= link_to 'Удалить', car, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+  <td><%= link_to 'Удалить', car_path(car), method: :delete, data: { confirm: 'Вы уверены?' } %></td>
 </tr>

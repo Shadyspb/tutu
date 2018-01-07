@@ -3,21 +3,28 @@ class Train < ApplicationRecord
   belongs_to :route
   has_many :tickets
   has_many :cars
+  attr_accessor :places
 
-  def regular_up_places
-    cars.regular.sum(:up_places)
+  after_initialize do |train|
+    train.places = {}
   end
 
-  def regular_down_places
-    cars.regular.sum(:down_places)
+  def places_count
+    car_types = cars.map(&:type).uniq
+    car_types.each do |car_type|
+      Car::PLACES.each do |place_type, place_name|
+        self.places[place_name] = self.places[place_name].to_i + count_places(car_type, place_type)
+      end
+    end
+    self.places.delete_if { |k, v| v.zero? }
   end
 
-  def coupe_up_places
-    cars.coupe.sum(:up_places)
+  def sorted_cars
+    cars.sorted(sort_from_head)
   end
 
-  def coupe_down_places
-    cars.coupe.sum(:down_places)
+  def count_places(car_type, place_type)
+    cars.where(type: car_type).sum("#{place_type}_places")
   end
 
   validates :number, presence: true
