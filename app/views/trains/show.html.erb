@@ -21,31 +21,27 @@
 
 <p>
   <strong>Вагоны:</strong>
+  <p>
   <% if @train.cars.present? %>
-    Плацкартных: <%=  @train.cars.regular.count %>
-    Купейных: <%= @train.cars.coupe.count %>
+    <%  @train.sorted_cars.each do |car| %>
+      <%= link_to car.counter, car_path(car) %><br>
+    <% end %>
+  </p>
   <% else %>
-    Нет вагонов
+      Нет вагонов
   <% end %>
 </p>
 
 <p>
-  <strong>Места:</strong>
+  <strong>Места:</strong><br>
   <% if @train.cars.present? %>
-    <strong>Плацкартных:</strong>
-    Верхних: <%= @train.regular_up_places %>
-    Нижних:  <%= @train.regular_down_places %>
+    <% @train.places_count.each do |place, quantity| %>
+      <%= "#{place}: #{quantity}" %>
+    <% end %>
+  <% else %>
+    Нет вагонов
+  <% end %>
 </p>
-
-<p>
-  <strong>Купейных:</strong>
-   Верхних: <%= @train.coupe_up_places %>
-   Нижних:  <%= @train.coupe_down_places %>
- <% else %>
-   Нет вагонов
- <% end %>
-</p>
-
 
 <%= link_to 'Изменить', edit_train_path(@train) %> |
 <%= link_to 'Назад', trains_path %>
