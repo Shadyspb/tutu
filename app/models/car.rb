@@ -15,13 +15,13 @@ class Car < ApplicationRecord
     seat: 'Сидячие'
   }.freeze
 
-  validates :counter, uniqueness: { scope: :train_id }
+  validates :number, uniqueness: { scope: :train_id }
 
-  before_validation :set_counter, if: :train_id_changed?
+  before_validation :set_number, if: :train_id_changed?
 
-  scope :sorted, -> (sort_from_head) { sort_from_head ? order(:counter) : order(counter: :desc)}
+  scope :sorted, -> (sort_from_head) { sort_from_head ? order(:number) : order(number: :desc)}
 
-  def set_counter
-    self.counter = train.cars.maximum(:counter).to_i + 1
+  def set_number
+    self.number = train.cars.maximum(:number).to_i + 1
   end
 end

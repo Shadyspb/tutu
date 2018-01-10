@@ -6,14 +6,14 @@ class Train < ApplicationRecord
   attr_accessor :places
 
   after_initialize do |train|
-    train.places = {}
+    train.places = Hash.new(0)
   end
 
   def places_count
     car_types = cars.map(&:type).uniq
     car_types.each do |car_type|
       Car::PLACES.each do |place_type, place_name|
-        self.places[place_name] = self.places[place_name].to_i + count_places(car_type, place_type)
+        self.places[place_name] += count_places(car_type, place_type)
       end
     end
     self.places.delete_if { |k, v| v.zero? }
