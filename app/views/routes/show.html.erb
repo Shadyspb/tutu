@@ -25,11 +25,28 @@
 </p>
 <p>
   <% if @route.railway_stations.any? %>
-    <ul>
+  <table>
+    <thead>
+      <tr>
+        <td witdh="100px"> Название </td>
+        <td> Позиция </td>
+      <tr>
+    </thead>
+    <tbody>
       <% @route.railway_stations.ordered.each do |station| %>
-          <li><%= station.title %></li>
+      <tr>
+        <td><%= station.title %></td>
+        <td>
+        <%=  form_tag update_position_railway_station_path(station), method: :patch do %>
+          <%= number_field_tag :position, station.postition_in(@route) %>
+          <%= hidden_field_tag :route_id, @route.id %>
+          <%= submit_tag "Изменить" %>
+        <% end %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
       <% end%>
-    </ul>
   <% else %>
     Cтанций в маршруте нет
   <% end %>
