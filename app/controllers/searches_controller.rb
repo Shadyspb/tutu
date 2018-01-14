@@ -9,10 +9,4 @@ class SearchesController < ApplicationController
       @finish_station = RailwayStation.find(params[:finish_station])
     end
   end
-
-private
-
-  def search_params
-    params.require(:stations).permit(:start_station, :finish_station)
-  end
 end
