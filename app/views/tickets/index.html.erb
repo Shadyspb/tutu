@@ -1,12 +1,15 @@
-<p id="notice"><%= notice %></p>
+<h1>Билеты:</h1>
 
-<h1>Список билетов</h1>
-
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
-      <th>Номер</th>
-      <th colspan="3"></th>
+      <th>Поезд</th>
+      <th>Отправление</th>
+      <th>Прибытие</th>
+      <th>Имя</th>
+      <th>Фамилия</th>
+      <th>Отчество</th>
+      <th>email</th>
     </tr>
   </thead>
 
@@ -15,7 +18,4 @@
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'Добавить билет', new_ticket_path %>
-<%= link_to 'Главная страница', welcome_index_path %>
+<%= link_to 'Назад', search_path %>

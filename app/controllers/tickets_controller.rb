@@ -15,7 +15,7 @@ class TicketsController < ApplicationController
   def create
     @ticket = Ticket.new(ticket_params)
     if @ticket.save
-      redirect_to @ticket
+      redirect_to ticket_path(@ticket)
     else
       render :new
     end
@@ -44,6 +44,6 @@ class TicketsController < ApplicationController
   end
 
   def ticket_params
-    params.require(:ticket).permit(:number)
+    params.require(:ticket).permit(:passenger_name, :passenger_lastname, :passenger_patronymic, :passport_series, :passport_number, :start_station_id, :finish_station_id, :train_id)
   end
 end

@@ -43,10 +43,20 @@
           <%= submit_tag "Изменить" %>
         <% end %>
         </td>
+        <%= form_tag update_time_railway_station_path(station), method: :patch do %>
+        <td>
+        <%= time_field_tag :arrival_time, station.time(@route, :arrival_time) %><%= hidden_field_tag :route_id, @route.id %>
+        <%= submit_tag "Изменить" %>
+       </td>
+       <td>
+        <%= time_field_tag :departure_time, station.time(@route, :departure_time) %><%= hidden_field_tag :route_id, @route.id %>
+        <%= submit_tag "Изменить" %>
+       </td>
+        <% end %>
       </tr>
+    <% end %>
     </tbody>
   </table>
-      <% end%>
   <% else %>
     Cтанций в маршруте нет
   <% end %>
