@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180109183716) do
+ActiveRecord::Schema.define(version: 20180114162210) do
 
   create_table "cars", force: :cascade do |t|
     t.integer "up_places"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20180109183716) do
     t.integer "side_down_places"
     t.integer "side_up_places"
     t.integer "seat_places"
-    t.integer "counter"
+    t.integer "number"
     t.index ["train_id"], name: "index_cars_on_train_id"
   end
 
@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 20180109183716) do
     t.integer "route_id"
     t.integer "station_order"
     t.integer "position"
+    t.time "arrival_time"
+    t.time "departure_time"
   end
 
   create_table "routes", force: :cascade do |t|
@@ -50,11 +52,16 @@ ActiveRecord::Schema.define(version: 20180109183716) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "train_id"
-    t.integer "from_station_id"
-    t.integer "to_station_id"
+    t.integer "start_station_id"
+    t.integer "finish_station_id"
     t.integer "user_id"
-    t.index ["from_station_id"], name: "index_tickets_on_from_station_id"
-    t.index ["to_station_id"], name: "index_tickets_on_to_station_id"
+    t.string "passenger_name"
+    t.string "passenger_lastname"
+    t.string "passenger_patronymic"
+    t.string "passport_number"
+    t.string "passport_series"
+    t.index ["finish_station_id"], name: "index_tickets_on_finish_station_id"
+    t.index ["start_station_id"], name: "index_tickets_on_start_station_id"
     t.index ["train_id"], name: "index_tickets_on_train_id"
     t.index ["user_id"], name: "index_tickets_on_user_id"
   end

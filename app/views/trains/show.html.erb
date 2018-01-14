@@ -24,7 +24,7 @@
   <p>
   <% if @train.cars.present? %>
     <%  @train.sorted_cars.each do |car| %>
-      <%= link_to car.counter, car_path(car) %><br>
+      <%= link_to car.number, car_path(car) %><br>
     <% end %>
   </p>
   <% else %>
@@ -41,6 +41,10 @@
   <% else %>
     Нет вагонов
   <% end %>
+</p>
+
+<p>
+<%= link_to "Добавить вагон", new_train_car_path(@train) %>
 </p>
 
 <%= link_to 'Изменить', edit_train_path(@train) %> |

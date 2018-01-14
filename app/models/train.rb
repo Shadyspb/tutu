@@ -5,6 +5,8 @@ class Train < ApplicationRecord
   has_many :cars
   attr_accessor :places
 
+  scope :train_on_route, -> (id) { joins(route: :railway_stations).where("railway_station_id = ?", id) }
+
   after_initialize do |train|
     train.places = Hash.new(0)
   end
@@ -25,6 +27,10 @@ class Train < ApplicationRecord
 
   def count_places(car_type, place_type)
     cars.where(type: car_type).sum("#{place_type}_places")
+  end
+
+  def self.search_by_stations(start_station, finish_station)
+    Train.train_on_route(start_station) & Train.train_on_route(finish_station)
   end
 
   validates :number, presence: true
