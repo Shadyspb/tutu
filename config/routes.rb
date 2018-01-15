@@ -1,16 +1,22 @@
 Rails.application.routes.draw do
-  resources :trains do
-    resources :cars
-  end
-  resources :railway_stations do
-    patch :update_position, on: :member
-    patch :update_time, on: :member
-  end
-  resources :routes
-  resources :tickets
-  resources :users
+  devise_for :users
+
   resources :cars
   resource :search, only: [:show]
+  resources :tickets
+
+  namespace :admin do
+    resources :trains do
+      resources :cars
+    end
+    resources :railway_stations do
+      patch :update_position, on: :member
+      patch :update_time, on: :member
+    end
+    resources :routes
+    resources :tickets
+    root 'welcome#index'
+  end
 
   get 'welcome/index'
   root 'welcome#index'
