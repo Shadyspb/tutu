@@ -1,0 +1,17 @@
+<p>
+  <strong>Вагон:</strong>
+  <%= @car.number %>
+</p>
+
+<p>
+  <strong>Тип вагона:</strong>
+  <%= @car.type %>
+</p>
+
+<p>
+  <strong>Поезд:</strong>
+  <%= @car.train.number %>
+</p>
+
+<%= link_to 'Редактировать', edit_admin_car_path(@car) %>
+<%= link_to 'Назад', :back %>

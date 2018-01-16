@@ -1,9 +1,0 @@
-<tr>
-  <td><%= car.number %></td>
-  <td><%= car.type %></td>
-  <td><%= car.train.number %></td>
-
-  <td><%= link_to 'Показать', car_path(car) %></td>
-  <td><%= link_to 'Редактировать', edit_car_path(car) %></td>
-  <td><%= link_to 'Удалить', car_path(car), method: :delete, data: { confirm: 'Вы уверены?' } %></td>
-</tr>

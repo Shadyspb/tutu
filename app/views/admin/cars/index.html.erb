@@ -1,0 +1,21 @@
+<h1>Вагоны</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Вагон</th>
+    <th>Тип вагона</th>
+    <th>Поезд</th>
+  </tr>
+  </thead>
+
+  <tbody>
+    <%= render collection: [:admin, @cars], partial: 'car' %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Новый вагон', new_admin_car_path %>
+<br>
+<%= link_to 'Назад', welcome_index_path %>

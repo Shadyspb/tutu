@@ -5,6 +5,7 @@
   <td><%= ticket.passenger_name %></td>
   <td><%= ticket.passenger_lastname %></td>
   <td><%= ticket.passenger_patronymic %></td>
+  <td><%= ticket.user.email %></td>
 
   <td><%= link_to 'Показать', ticket %></td>
   <td><%= link_to 'Удалить', ticket, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
