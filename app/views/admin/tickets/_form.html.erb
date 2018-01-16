@@ -4,6 +4,11 @@
   <%= render 'common/errors', resource: @ticket %>
 
   <div class="field">
+    <%= form.label :user_id, "Email Пользователя" %>
+    <%= form.collection_select :user_id, User.all, :id, :email, {}, class: "form-control" %>
+  </div>
+
+  <div class="field">
     <%= form.label :passenger_name, 'Имя пассажира' %>
     <%= form.text_field :passenger_name %>
   </div>
@@ -33,5 +38,3 @@
   </div>
 
 <% end %>
-
-<%= link_to 'Назад', welcome_index_path %>

@@ -44,6 +44,6 @@ class Admin::TicketsController < Admin::BaseController
   end
 
   def ticket_params
-    params.require(:ticket).permit(:passenger_name, :passenger_lastname, :passenger_patronymic, :passport_series, :passport_number, :start_station_id, :finish_station_id, :train_id)
+    params.require(:ticket).permit(:passenger_name, :passenger_lastname, :passenger_patronymic, :passport_series, :passport_number, :start_station_id, :finish_station_id, :train_id, :user_id)
   end
 end
