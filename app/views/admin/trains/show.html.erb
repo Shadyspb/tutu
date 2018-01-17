@@ -1,26 +1,24 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <strong>Number:</strong>
+  <strong><%= t('.number') %></strong>
   <%= @train.number %>
 </p>
 
 <p>
-  <strong>На станции:</strong>
+  <strong><%= t('.station') %></strong>
   <% if @train.current_station.present? %>
   <%= @train.current_station&.title || 'Нет Станции' %>
   <% end %>
 </p>
 
 <p>
-  <strong>Маршрут:</strong>
+  <strong><%= t('.route') %></strong>
   <% if @train.route.present? %>
   <%= @train.route.name || 'Нет Маршрута' %>
   <% end %>
 </p>
 
 <p>
-  <strong>Вагоны:</strong>
+  <strong><%= t('.car') %></strong>
   <p>
   <% if @train.cars.present? %>
     <%  @train.sorted_cars.each do |car| %>
@@ -33,7 +31,7 @@
 </p>
 
 <p>
-  <strong>Места:</strong><br>
+  <strong><%= t('.sits') %></strong><br>
   <% if @train.cars.present? %>
     <% @train.places_count.each do |place, quantity| %>
       <%= "#{place}: #{quantity}" %>
@@ -44,8 +42,8 @@
 </p>
 
 <p>
-<%= link_to "Добавить вагон", new_admin_train_car_path(@train) %>
+<%= link_to t('common.add'), new_admin_train_car_path(@train) %>
 </p>
 
-<%= link_to 'Изменить', edit_admin_train_path(@train) %> |
-<%= link_to 'Назад', admin_trains_path %>
+<%= link_to t('common.edit'), edit_admin_train_path(@train) %> |
+<%= link_to t('common.back'), admin_trains_path %>

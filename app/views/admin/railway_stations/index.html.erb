@@ -1,13 +1,6 @@
-<h1>Railway Stations</h1>
+<h1><%= t('.title') %></h1>
 
 <table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
   <tbody>
     <%= render @railway_stations %>
   </tbody>
@@ -15,5 +8,5 @@
 
 <br>
 
-<%= link_to 'Создать станцию', new_admin_railway_station_path %> <br>
+<%= link_to t('common.create'), new_admin_railway_station_path %> <br>
 <%= link_to 'Главная страница', welcome_index_path %>

@@ -5,12 +5,12 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <%= label_tag :start_station, "Начальная станция" %>
-      <%= select_tag :start_station, options_from_collection_for_select(RailwayStation.all, :id, :title), { class: 'form-control' } %>
+      <%= select_tag :start_station, options_from_collection_for_select(@stations, :id, :title), { class: 'form-control' } %>
     </div>
 
     <div class="form-group col-md-6">
       <%= label_tag :finish_station, "Конечная станция" %>
-      <%= select_tag :finish_station, options_from_collection_for_select(RailwayStation.all, :id, :title), { class: 'form-control' } %>
+      <%= select_tag :finish_station, options_from_collection_for_select(@stations, :id, :title), { class: 'form-control' } %>
     </div>
   </div>
 
