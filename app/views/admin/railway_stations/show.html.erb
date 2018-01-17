@@ -1,7 +1,4 @@
-<p>
-  <strong>Title:</strong>
-  <%= @railway_station.title %>
-</p>
+<p><%= t('.title') %></p>
 
 <p>
   <% if @railway_station.routes.any? %>
@@ -16,5 +13,5 @@
   <% end %>
 </p>
 
-<%= link_to 'Изменить', edit_admin_railway_station_path(@railway_station) %> |
-<%= link_to 'Назад', admin_railway_stations_path %>
+<%= link_to t('common.edit'), edit_admin_railway_station_path(@railway_station) %> |
+<%= link_to t('common.back'), admin_railway_stations_path %>

@@ -1,7 +1,5 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <strong>Наименование:</strong>
+  <strong><%= t('.title') %></strong>
   <%= @route.name %>
 </p>
 
@@ -62,5 +60,5 @@
   <% end %>
 </p>
 
-<%= link_to 'Изменить', edit_admin_route_path(@route) %> |
-<%= link_to 'Назад', admin_routes_path %>
+<%= link_to t('common.edit'), edit_admin_route_path(@route) %> |
+<%= link_to t('common.back'), admin_routes_path %>
