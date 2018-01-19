@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :cars
+  #resources :cars
   resource :search, only: [:show, :create]
   resources :tickets
+  resources :routes
 
   namespace :admin do
     resources :trains do
       resources :cars
     end
+
     resources :railway_stations do
       patch :update_position, on: :member
       patch :update_time, on: :member

@@ -14,7 +14,7 @@ class Admin::CarsController < Admin::BaseController
   end
 
   def create
-    @car = @train.car.new(car_params)
+    @car = @train.cars.new(car_params)
 
     if @car.save
       redirect_to [:admin, @train], notice: 'Вагон создан'
