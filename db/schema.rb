@@ -10,19 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180115233715) do
+ActiveRecord::Schema.define(version: 20180118183235) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "cars", force: :cascade do |t|
+    t.string "lol"
     t.integer "up_places"
     t.integer "down_places"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "train_id"
+    t.bigint "train_id"
     t.string "type"
     t.integer "side_down_places"
     t.integer "side_up_places"
     t.integer "seat_places"
     t.integer "number"
+    t.index ["id", "type"], name: "index_cars_on_id_and_type"
     t.index ["train_id"], name: "index_cars_on_train_id"
   end
 
@@ -51,17 +56,21 @@ ActiveRecord::Schema.define(version: 20180115233715) do
     t.string "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "train_id"
-    t.integer "start_station_id"
-    t.integer "finish_station_id"
-    t.integer "user_id"
+    t.bigint "train_id"
+    t.bigint "from_station_id"
+    t.bigint "to_station_id"
+    t.bigint "user_id"
+    t.bigint "start_station_id"
+    t.bigint "finish_station_id"
     t.string "passenger_name"
     t.string "passenger_lastname"
     t.string "passenger_patronymic"
     t.string "passport_number"
     t.string "passport_series"
     t.index ["finish_station_id"], name: "index_tickets_on_finish_station_id"
+    t.index ["from_station_id"], name: "index_tickets_on_from_station_id"
     t.index ["start_station_id"], name: "index_tickets_on_start_station_id"
+    t.index ["to_station_id"], name: "index_tickets_on_to_station_id"
     t.index ["train_id"], name: "index_tickets_on_train_id"
     t.index ["user_id"], name: "index_tickets_on_user_id"
   end
@@ -70,8 +79,8 @@ ActiveRecord::Schema.define(version: 20180115233715) do
     t.string "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "current_station_id"
-    t.integer "route_id"
+    t.bigint "current_station_id"
+    t.bigint "route_id"
     t.boolean "sort_from_head", default: true, null: false
     t.index ["current_station_id"], name: "index_trains_on_current_station_id"
     t.index ["route_id"], name: "index_trains_on_route_id"
