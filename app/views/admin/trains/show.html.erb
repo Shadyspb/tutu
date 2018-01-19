@@ -22,7 +22,7 @@
   <p>
   <% if @train.cars.present? %>
     <%  @train.sorted_cars.each do |car| %>
-      <%= link_to car.number, car_path(car) %><br>
+      <%= link_to car.number, admin_train_path(car) %><br>
     <% end %>
   </p>
   <% else %>
