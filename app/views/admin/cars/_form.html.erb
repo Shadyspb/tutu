@@ -22,19 +22,20 @@
   </div>
 
   <div class="field">
-      <%= form.label 'Верхних боковых мест' %>
-      <%= form.number_field :side_up_places %>
+    <%= form.label 'Верхних боковых мест' %>
+    <%= form.number_field :side_up_places %>
   </div>
 
   <div class="field">
-      <%= form.label 'Нижних боковых мест' %>
-      <%= form.number_field :side_down_places %>
+    <%= form.label 'Нижних боковых мест' %>
+    <%= form.number_field :side_down_places %>
   </div>
 
   <div class="field">
-      <%= form.label 'Сидячих мест' %>
-      <%= form.number_field :seat_places %>
+    <%= form.label 'Сидячих мест' %>
+    <%= form.number_field :seat_places %>
   </div>
+
 
   <div class="actions">
     <%= form.submit "#{@car.new_record? ? 'Создать' : 'Изменить'}"%>
