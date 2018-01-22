@@ -20,7 +20,7 @@ class Admin::TrainsController < Admin::BaseController
 
     respond_to do |format|
       if @train.save
-        format.html { redirect_to [:admin, @train], notice: 'Поезд Создан.' }
+        format.html { redirect_to admin_trains_path, notice: 'Поезд Создан.' }
       else
         format.html { render :new }
       end
@@ -30,7 +30,7 @@ class Admin::TrainsController < Admin::BaseController
   def update
     respond_to do |format|
       if @train.update(train_params)
-        format.html { redirect_to [:admin, @train], notice: 'Поезд Изменен.' }
+        format.html { redirect_to admin_trains_path, notice: 'Поезд Изменен.' }
       else
         format.html { render :edit }
       end

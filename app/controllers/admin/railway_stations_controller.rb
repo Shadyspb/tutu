@@ -21,7 +21,7 @@ class Admin::RailwayStationsController < Admin::BaseController
 
     respond_to do |format|
       if @railway_station.save
-        format.html { redirect_to [:admin, @railway_station], notice: 'Станция Создана.' }
+        format.html { redirect_to admin_railway_stations_path, notice: 'Станция Создана.' }
       else
         format.html { render :new }
       end
@@ -31,7 +31,7 @@ class Admin::RailwayStationsController < Admin::BaseController
   def update
     respond_to do |format|
       if @railway_station.update(railway_station_params)
-        format.html { redirect_to [:admin, @railway_station], notice: 'Станция Изменена.' }
+        format.html { redirect_to admin_railway_stations_path, notice: 'Станция Изменена.' }
       else
         format.html { render :edit }
       end
